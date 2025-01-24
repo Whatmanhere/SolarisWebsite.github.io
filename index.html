@@ -1,13 +1,151 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/Solarislogo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solaris - Advanced Roblox Experience</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualTable</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Space Mono', monospace;
+      background-size: cover;
+      background-position: center;
+      transition: background 1s ease-in-out;
+    }
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      margin: 50px auto;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 15px;
+    }
+    .name {
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .bio {
+      font-size: 1.2rem;
+      color: white;
+      margin: 10px 0;
+    }
+
+    .music-player {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+      color: white;
+    }
+    .music-player audio {
+      width: 100%;
+    }
+    #nowPlaying {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #ffcc00;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .link:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .link svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-picture" id="profilePicture"></div>
+    <div class="name">VirtualTable</div>
+    <div class="bio">
+      My name is VirtualTable, I main Arch Linux and Windows 10.<br>
+      I use and know: C++, C#, Python, Rust, Lua/LuaU, IDC, Reverse Engineering.
+      I am Currently in: Germany.
+    </div>
+    <div class="music-player">
+      <audio id="audioPlayer" controls autoplay>
+        <source src="data/wutiwant.mp3" "data/roi.mp3" "wutiwant.mp3" type="audio/mp3">
+      </audio>
+      <div id="nowPlaying">Now Playing</div>
+    </div>
+    <div class="links">
+      <a href="https://github.com/Whatmanhere/" class="link" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.417 2.865 8.166 6.839 9.49.5.091.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.341-3.369-1.341-.455-1.155-1.11-1.463-1.11-1.463-.907-.62.07-.607.07-.607 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.912.832.092-.646.349-1.088.635-1.338-2.22-.254-4.555-1.11-4.555-4.943 0-1.091.39-1.983 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.27 2.75 1.026A9.561 9.561 0 0 1 12 6.844c.852.004 1.71.115 2.512.338 1.91-1.296 2.75-1.026 2.75-1.026.546 1.377.202 2.394.1 2.647.64.7 1.029 1.592 1.029 2.683 0 3.841-2.338 4.686-4.566 4.935.358.308.678.918.678 1.852 0 1.338-.012 2.418-.012 2.745 0 .267.18.577.688.479A10.003 10.003 0 0 0 22 12c0-5.523-4.477-10-10-10z"></path>
+        </svg>
+      </a>
+      <a href="https://discord.com/users/1187774454298853528" class="link" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <path d="M41.625 10.77C37.645 7.57 31.35 7.02 31.08 7.0c-0.42-.04-0.82.2-.99.59-.01.02-.15.34-.3.83 2.63.45 5.86 1.35 8.79 3.16.47.3.62.92.33 1.39-.2.31-.53.48-.87.48-.18 0-.36-.05-.52-.15C32.5 10.16 26.21 10 25 10c-1.21 0-7.5.16-12.53 3.28-.47.29-1.08.14-1.37-.34-.3-.47-.14-1.08.34-1.37C14.35 9.77 17.58 8.87 20.22 8.43c-.15-.5-.29-.81-.31-.83-.18-.39-.58-.63-1-.59C18.65 7.02 12.35 7.57 8.32 10.81 6.21 12.76 2 24.15 2 34c0 .18.05.34.13.5C5.04 39.61 12.97 40.94 14.78 41c.01 0 .03 0 .04 0 .32 0 .63-.15.81-.41L17.45 38.07c-4.93-1.27-7.45-3.43-7.6-3.56-.41-.36-.44-.99-.07-1.35.36-.36.99-.39 1.35-.06.06.06 4.7 3.94 13.83 3.94 9.14 0 13.77-3.95 13.83-4 .41-.36.99-.32 1.35.07.36.36.32.99-.06 1.35-.15.13-2.67 2.29-7.6 3.56L34.38 40.59c.18.27.5.41.82.41.01 0 .02 0 .04 0C37.03 40.94 44.96 39.61 47.87 34.5c.09-.16.13-.32.13-.5 0-9.85-4.21-21.24-6.38-23.23zM18.5 30c-1.93 0-3.5-1.79-3.5-4s1.57-4 3.5-4c1.93 0 3.5 1.79 3.5 4s-1.57 4-3.5 4zm13 0c-1.93 0-3.5-1.79-3.5-4s1.57-4 3.5-4c1.93 0 3.5 1.79 3.5 4s-1.57 4-3.5 4z"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <script>
+    const backgrounds = ['data/background1.jpg', 'data/background2.jpg'];
+    let currentIndex = 0;
+    function changeBackground() {
+      document.body.style.backgroundImage = `url(${backgrounds[currentIndex]})`;
+      currentIndex = (currentIndex + 1) % backgrounds.length;
+    }
+    changeBackground();
+    setInterval(changeBackground, 30 * 60 * 1000);
+    document.getElementById('profilePicture').style.backgroundImage = 'url(data/virtualtable.jpg)';
+    const audioPlayer = document.getElementById('audioPlayer');
+    const nowPlaying = document.getElementById('nowPlaying');
+    audioPlayer.addEventListener('play', () => {
+      const currentTrack = audioPlayer.querySelector('source').src.split('/').pop();
+      nowPlaying.textContent = `Now Playing: ${currentTrack}`;
+    });
+  </script>
+</body>
 </html>
